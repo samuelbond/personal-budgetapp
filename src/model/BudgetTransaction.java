@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "BudgetTransaction.findAll", query = "SELECT b FROM BudgetTransaction b"),
     @NamedQuery(name = "BudgetTransaction.findByTrxId", query = "SELECT b FROM BudgetTransaction b WHERE b.trxId = :trxId"),
+    @NamedQuery(name = "BudgetTransaction.findBybudgetId", query = "SELECT b FROM BudgetTransaction b WHERE b.budgetId = :budgetId"),
     @NamedQuery(name = "BudgetTransaction.findByTrxName", query = "SELECT b FROM BudgetTransaction b WHERE b.trxName = :trxName"),
     @NamedQuery(name = "BudgetTransaction.findByTrxDesc", query = "SELECT b FROM BudgetTransaction b WHERE b.trxDesc = :trxDesc"),
     @NamedQuery(name = "BudgetTransaction.findByTrxAmount", query = "SELECT b FROM BudgetTransaction b WHERE b.trxAmount = :trxAmount")})

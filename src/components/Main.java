@@ -9,6 +9,7 @@ import helper.RandomGenerator;
 import java.util.Date;
 import java.util.List;
 import model.Budget;
+import model.BudgetTransaction;
 import model.Model;
 import model.Users;
 
@@ -89,6 +90,11 @@ public class Main {
     public List<Budget> getBudgetList(String userid)
     {
        return model.getUserBudget(new Users(userid));
+    }
+    
+    public List<BudgetTransaction> getTransactionList(String budgetId)
+    {
+        return model.getTransactions(new Budget(budgetId));
     }
     
 }

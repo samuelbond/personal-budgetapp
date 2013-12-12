@@ -118,5 +118,11 @@ public class Model {
    {
        return em.createNamedQuery("Budget.findByBudgetUser", Budget.class).setParameter("userId", user).getResultList();
    }
+   
+   public List<BudgetTransaction> getTransactions(Budget bg)
+   {
+       return em.createNamedQuery("BudgetTransaction.findBybudgetId", 
+               BudgetTransaction.class).setParameter("budgetId", bg).getResultList();
+   }
     
 }
