@@ -37,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         TextPrompt tp = new TextPrompt("Username", jTextField1);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

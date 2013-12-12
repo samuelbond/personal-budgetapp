@@ -62,6 +62,7 @@ public class NewBudget extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Create Budget");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -66,10 +66,11 @@ public class TrackBudget extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         mytable = new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Total Amount", trackValue}
+                {"Total Amount", trackValue+"Ft"}
             },
             new String [] {
                 "", ""
