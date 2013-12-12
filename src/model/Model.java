@@ -44,6 +44,22 @@ public class Model {
     }
     
     
+    public boolean updateUser(Users us)
+    {
+     try
+        {
+           em.getTransaction().begin();
+           em.merge(us);
+           em.getTransaction().commit();
+    
+        }catch(Exception ex)
+        {
+            return false;
+        }
+        return true;
+    }   
+    
+    
     public Users getUser(String userid)
     {
         return em.find(Users.class, userid);

@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import model.Budget;
@@ -147,6 +148,70 @@ public class Main {
          exs.printStackTrace();
         }
     
+    }
+    
+    
+    public int trackBudget(String budgetId)
+    {
+        List<BudgetTransaction> btList = this.getTransactionList(budgetId);
+        int sum = 0;
+        for(BudgetTransaction bg: btList)
+        {
+            if(bg.getTrxType().getTypeId() == 1)
+            {
+                sum = sum + bg.getTrxAmount();
+            }
+            else
+            {
+                sum = sum - bg.getTrxAmount();
+            }
+        }
+        return sum;
+    }
+    
+    
+    public int trackBudgetForAGivenPeriod(String budgetid, Date start, Date stop)
+    {
+        List<BudgetTransaction> btList = this.getTransactionList(budgetid);
+       
+        int sum = 0;
+        for(BudgetTransaction bg: btList)
+        {
+            int equal1 = start.compareTo(bg.getTrxDate());
+            int equal2 = bg.getTrxDate().compareTo(stop);
+            
+            if(equal1 <= 0 && equal2 <= 0)
+            {
+            if(bg.getTrxType().getTypeId() == 1)
+            {
+                sum = sum + bg.getTrxAmount();
+            }
+            else
+            {
+                sum = sum - bg.getTrxAmount();
+            }
+            }
+        }
+        return sum;
+    }
+    
+    
+    public boolean updateUserAccount(String fullname, String username, String password, String userid)
+    {
+        usr = model.getUser(userid);
+        if(password != null)
+        {
+            HashString hs = new HashString(password);
+            usr.setPassword(hs.HashPassword());
+        }
+        usr.setFullname(fullname);
+        usr.setUsername(username);
+        
+        if(model.updateUser(usr)){
+            return true;
+        }
+        
+        return false;
     }
    
     

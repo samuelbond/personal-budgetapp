@@ -249,7 +249,11 @@ public class Account extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-
+     int rowIndex = jTable1.getSelectedRow();
+     System.setProperty("budgetid", dataList.get(rowIndex).getBudgetId());
+     Budget bg = new Budget();
+     bg.setVisible(true);
+     setVisible(false);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed

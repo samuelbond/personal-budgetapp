@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Dec 12 19:54:34 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0142-e829-0f0f-0000000bfa80 
-on database directory C:\Users\samuelbond\Documents\NetBeansProjects\BudgetApp\budgetapp  with class loader sun.misc.Launcher$AppClassLoader@1e1225d 
+Thu Dec 12 23:16:29 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0142-e8e1-ea22-0000009168b8 
+on database directory C:\Users\samuelbond\Documents\NetBeansProjects\BudgetApp\budgetapp  with class loader sun.misc.Launcher$AppClassLoader@1313e0e 
 Loaded from file:/C:/Program%20Files/glassfish-4.0/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_21-b11

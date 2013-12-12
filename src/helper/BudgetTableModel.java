@@ -60,7 +60,7 @@ public Object getValueAt(final int rowIndex, int columnIndex)
             case 2:
                   return data.get(rowIndex).getTrxType().getTypeName();
             case 3:
-                  return data.get(rowIndex).getTrxAmount();
+                  return data.get(rowIndex).getTrxAmount()+"Ft";
             case 4:
                   return data.get(rowIndex).getTrxDate();
            
