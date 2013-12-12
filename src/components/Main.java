@@ -6,12 +6,19 @@ package components;
 
 import helper.HashString;
 import helper.RandomGenerator;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 import model.Budget;
 import model.BudgetTransaction;
 import model.Model;
+import model.TransactionType;
 import model.Users;
+import views.NewTransaction;
 
 
 /**
@@ -96,5 +103,51 @@ public class Main {
     {
         return model.getTransactions(new Budget(budgetId));
     }
+    
+    
+    public boolean createNewTransaction(String budgetid, String name, String desc, int amount, int type)
+    {
+        BudgetTransaction bt = new BudgetTransaction(rd.generate(), name, desc, amount, new Date());
+        bt.setBudgetId(new Budget(budgetid));
+        bt.setTrxType(new TransactionType(type));
+        
+        if(model.insertNewBudgetTrx(bt))
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+
+    public void doSomething()
+    {
+       Connection con = null;
+    
+     
+        try
+        {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            con = DriverManager.getConnection("jdbc:derby:budgetapp;create=true", "samuel", "samuel");
+
+        }catch( ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+   
+        try
+        {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM budgetapp.TRANSACTION_TYPE");
+            while(rs.next()){
+                System.out.println(rs.getString("type_id"));  
+            }
+            System.out.println("Insrt done");  
+        }catch(Exception exs){
+         exs.printStackTrace();
+        }
+    
+    }
+   
     
 }

@@ -4,12 +4,16 @@
  */
 package views;
 
+import components.Main;
+import helper.BudgetTableModel;
+
 /**
  *
  * @author samuelbond
  */
 public class Budget extends javax.swing.JFrame {
 
+    private Main mn = new Main();
     /**
      * Creates new form Budget
      */
@@ -49,18 +53,14 @@ public class Budget extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("New Transaction");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
-        ));
+        });
+
+        BudgetTableModel btm = new BudgetTableModel(System.getProperty("budgetid"));
+        jTable1.setModel(btm);
         jScrollPane1.setViewportView(jTable1);
 
         jMenu1.setText("File");
@@ -162,6 +162,12 @@ public class Budget extends javax.swing.JFrame {
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    NewTransaction nt = new NewTransaction();
+    nt.setVisible(true);
+    setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

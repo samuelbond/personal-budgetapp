@@ -7,6 +7,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -53,7 +56,11 @@ public class BudgetTransaction implements Serializable {
     @JoinColumn(name = "BUDGET_ID", referencedColumnName = "BUDGET_ID")
     @ManyToOne(optional = false)
     private Budget budgetId;
-
+    @Basic(optional = false)
+    @Column(name = "TRX_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date trxDate;
+    
     public BudgetTransaction() {
     }
 
@@ -61,11 +68,12 @@ public class BudgetTransaction implements Serializable {
         this.trxId = trxId;
     }
 
-    public BudgetTransaction(String trxId, String trxName, String trxDesc, int trxAmount) {
+    public BudgetTransaction(String trxId, String trxName, String trxDesc, int trxAmount, Date trxDate) {
         this.trxId = trxId;
         this.trxName = trxName;
         this.trxDesc = trxDesc;
         this.trxAmount = trxAmount;
+        this.trxDate = trxDate;
     }
 
     public String getTrxId() {
@@ -115,6 +123,17 @@ public class BudgetTransaction implements Serializable {
     public void setBudgetId(Budget budgetId) {
         this.budgetId = budgetId;
     }
+
+    public Date getTrxDate() {
+        return trxDate;
+    }
+
+    public void setTrxDate(Date trxDate) {
+        this.trxDate = trxDate;
+    }
+    
+    
+    
 
     @Override
     public int hashCode() {

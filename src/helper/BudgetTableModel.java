@@ -8,19 +8,19 @@ import components.Main;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-import model.Budget;
+import model.BudgetTransaction;
 
 /**
  *
  * @author samuelbond
  */
 public class BudgetTableModel extends AbstractTableModel{
-   private Vector<Budget> data;
+   private Vector<BudgetTransaction> data;
 private final String[] tableHeaders = {"Name", "Description", "Type", "Amount", "Date"};
 
 public BudgetTableModel(String budgetId)
 {
-    data = (Vector<Budget>) new Main().getBudgetList(budgetId);
+    data = (Vector<BudgetTransaction>) new Main().getTransactionList(budgetId);
 }
 
 @Override
@@ -54,18 +54,22 @@ public Object getValueAt(final int rowIndex, int columnIndex)
     SimpleDateFormat sdf = new SimpleDateFormat("MMM yyyy");
     switch(columnIndex){
             case 0:
-                return ((rowIndex)+1);
+                return data.get(rowIndex).getTrxName();
             case 1:
-                 return data.get(rowIndex).getBudgetName();
+                 return data.get(rowIndex).getTrxDesc();
             case 2:
-                  return sdf.format(data.get(rowIndex).getDateCreated());
+                  return data.get(rowIndex).getTrxType().getTypeName();
+            case 3:
+                  return data.get(rowIndex).getTrxAmount();
+            case 4:
+                  return data.get(rowIndex).getTrxDate();
            
     }
     
     return null;
 }
 
-    public Vector<Budget> getData() {
+    public Vector<BudgetTransaction> getData() {
         return data;
     }
  

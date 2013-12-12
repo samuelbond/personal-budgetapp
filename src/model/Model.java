@@ -124,5 +124,16 @@ public class Model {
        return em.createNamedQuery("BudgetTransaction.findBybudgetId", 
                BudgetTransaction.class).setParameter("budgetId", bg).getResultList();
    }
+   
+   public void runSomeAlter()
+   {
+       try
+       {
+       em.createNativeQuery("ALTER TABLE BUDGET_TRANSACTION ADD COLUMN TRX_DATE DATE "
+               + "CONSTRAINT NEW_CONSTRAINT CHECK (TRX_DATE IS NOT NULL)").executeUpdate();
+       }catch(Exception ex){
+          ex.printStackTrace();
+       }
+   }
     
 }
